@@ -5,5 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+    host: true,
+    allowedHosts: ['work-1-lidkrgwnmvqunizy.prod-runtime.all-hands.dev'],
   },
 })

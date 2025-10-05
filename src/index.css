@@ -1,24 +1,197 @@
 :root {
-  --color-primary: #0D1164;   /* Purple */
-  --color-secondary: #26667F; /* Gold */
-  --color-accent: #DC143C;    /* Crimson */
-  --color-bg: #F6F1E9;        /* Black */
-  --color-text: #934790;      /* Gray */
-  --color-tiles: #F6F1E3; /* Dark Gray */
+  /* Modern Slate/Blue Professional Palette */
+  --color-primary: #1e293b;     /* Slate 800 - Primary dark */
+  --color-secondary: #3b82f6;   /* Blue 500 - Professional blue */
+  --color-accent: #06b6d4;      /* Cyan 500 - Accent */
+  --color-bg: #f8fafc;          /* Slate 50 - Light background */
+  --color-text: #475569;        /* Slate 600 - Text */
+  --color-tiles: #ffffff;       /* White - Card backgrounds */
+  --color-muted: #94a3b8;       /* Slate 400 - Muted text */
+  --color-border: #e2e8f0;      /* Slate 200 - Borders */
+  --color-success: #10b981;     /* Emerald 500 - Success */
+  --color-warning: #f59e0b;     /* Amber 500 - Warning */
+  --color-error: #ef4444;       /* Red 500 - Error */
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
+  --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+  
+  /* Glass effect */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-backdrop: blur(10px);
 }
 
-/* Optional: future dark theme */
+/* Dark theme */
 [data-theme="dark"] {
-  --color-primary: #1E1E2F;
-  --color-secondary: #EFB914;
-  --color-accent: #E04E4E;
-  --color-bg: #000000;
-  --color-text: #CCCCCC;
-  --color-tiles: #c53d3d; /* Dark Gray */
+  --color-primary: #f8fafc;
+  --color-secondary: #3b82f6;
+  --color-accent: #06b6d4;
+  --color-bg: #0f172a;
+  --color-text: #cbd5e1;
+  --color-tiles: #1e293b;
+  --color-muted: #64748b;
+  --color-border: #334155;
+  --glass-bg: rgba(0, 0, 0, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Modern Utility Classes */
+@layer utilities {
+  /* Gradients */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  /* Glass Effects */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-backdrop);
+    -webkit-backdrop-filter: var(--glass-backdrop);
+  }
+  
+  .glass-card {
+    @apply glass rounded-xl shadow-lg;
+  }
+  
+  /* Animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .fade-in-delay-1 {
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+  
+  .fade-in-delay-2 {
+    animation-delay: 0.4s;
+    opacity: 0;
+  }
+  
+  .fade-in-delay-3 {
+    animation-delay: 0.6s;
+    opacity: 0;
+  }
+  
+  /* Hover Effects */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .hover-glow {
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-secondary text-white rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:shadow-lg hover-lift;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-transparent border-2 border-secondary text-secondary rounded-lg font-semibold transition-all duration-300 hover:bg-secondary hover:text-white hover-lift;
+  }
+  
+  .btn-accent {
+    @apply px-6 py-3 gradient-accent text-white rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover-lift;
+  }
+  
+  /* Service Cards */
+  .service-card {
+    @apply bg-tiles border border-border rounded-xl p-6 transition-all duration-300 hover-lift hover-glow;
+  }
+  
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply badge bg-secondary bg-opacity-10 text-secondary;
+  }
+  
+  .badge-success {
+    @apply badge bg-green-100 text-green-800;
+  }
+  
+  .badge-warning {
+    @apply badge bg-yellow-100 text-yellow-800;
+  }
+  
+  .badge-error {
+    @apply badge bg-red-100 text-red-800;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
 

@@ -88,8 +88,8 @@ export default function ContactModal({ show, onClose, mode = 'sales' }) {
   if (!show) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-      <div className="bg-bg rounded-xl shadow-lg max-w-lg w-full p-6 relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 p-4">
+      <div className="bg-bg rounded-xl shadow-lg max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 relative">
         <button
           className="absolute top-2 right-2 text-2xl text-secondary"
           onClick={() => { onClose(); setSent(false); setError(''); }}
@@ -134,18 +134,26 @@ export default function ContactModal({ show, onClose, mode = 'sales' }) {
             </div>
             <div>
               <label className="block text-sm font-medium text-primary">Interested Services</label>
-              <div className="flex gap-4 mt-1">
-                <label className="flex items-center gap-1">
-                  <input type="checkbox" name="services" value="InsightEdge" checked={form.services.includes('InsightEdge')} onChange={handleChange} />
-                  InsightEdge
+              <div className="grid grid-cols-1 gap-2 mt-1">
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" name="services" value="Integration & Migration Audit" checked={form.services.includes('Integration & Migration Audit')} onChange={handleChange} />
+                  🔍 Integration & Migration Audit
                 </label>
-                <label className="flex items-center gap-1">
-                  <input type="checkbox" name="services" value="PlaySure" checked={form.services.includes('PlaySure')} onChange={handleChange} />
-                  PlaySure
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" name="services" value="Game-Launch QA Pack" checked={form.services.includes('Game-Launch QA Pack')} onChange={handleChange} />
+                  🎮 Game-Launch QA Pack
                 </label>
-                <label className="flex items-center gap-1">
-                  <input type="checkbox" name="services" value="PartnerCare" checked={form.services.includes('PartnerCare')} onChange={handleChange} />
-                  PartnerCare
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" name="services" value="Ops Telemetry Starter Pack" checked={form.services.includes('Ops Telemetry Starter Pack')} onChange={handleChange} />
+                  📊 Ops Telemetry Starter Pack
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" name="services" value="Fractional TAM + Integration Support" checked={form.services.includes('Fractional TAM + Integration Support')} onChange={handleChange} />
+                  🤝 Fractional TAM + Integration Support
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" name="services" value="RG & Payments Triage" checked={form.services.includes('RG & Payments Triage')} onChange={handleChange} />
+                  ⚖️ RG & Payments Triage
                 </label>
               </div>
             </div>
