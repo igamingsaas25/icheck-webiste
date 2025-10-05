@@ -3,9 +3,11 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
-import InsightEdge from './pages/InsightEdge'
-import PlaySure from './pages/PlaySure'
-import PartnerCare from './pages/PartnerCare'
+import IntegrationAudit from './pages/IntegrationAudit'
+import GameLaunchQA from './pages/GameLaunchQA'
+import OpsTelemetry from './pages/OpsTelemetry'
+import FractionalTAM from './pages/FractionalTAM'
+import RGPaymentsTriage from './pages/RGPaymentsTriage'
 import ContactModal from './components/ContactModal'
 
 export default function App() {
@@ -21,9 +23,11 @@ export default function App() {
       <main className="flex-grow bg-bg">
         <Routes>
           <Route path="/" element={<Home onContact={openContact} onDemo={openDemo} />} />
-          <Route path="/insightedge" element={<InsightEdge />} />
-          <Route path="/playsure" element={<PlaySure />} />
-          <Route path="/partnercare" element={<PartnerCare />} />
+          <Route path="/integration-audit" element={<IntegrationAudit />} />
+          <Route path="/game-launch-qa" element={<GameLaunchQA />} />
+          <Route path="/ops-telemetry" element={<OpsTelemetry />} />
+          <Route path="/fractional-tam" element={<FractionalTAM />} />
+          <Route path="/rg-payments-triage" element={<RGPaymentsTriage />} />
         </Routes>
       </main>
       <Footer />
